@@ -29,9 +29,6 @@ function handleCardFlip(cardElement) {
     if (lockBoard) return;
     if (cardElement === firstCard) return;
 
-    cardElement.classList.add('flipped');
-    cardElement.textContent = cardElement.dataset.card;
-
     if (!firstCard) {
         firstCard = cardElement;
         return;
