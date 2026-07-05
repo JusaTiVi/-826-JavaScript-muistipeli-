@@ -13,14 +13,33 @@ function shuffle(array) {
 }
 
 export function createBoard(cardCount) {
+    function resetGame() {
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+    }
+    if (cardCount % 2 == false) {
+        alert("anna parillinen luku!")
+        return
+    }
+
+    if (cardCount > allCards.length * 2) {
+        alert("luvun täytyy olla alle 32!")
+    }
+    gameBoard.innerHTML = '';
+
     const selectedCards = allCards.slice(0, cardCount / 2);
     const cards = [...selectedCards, ...selectedCards];
+
     shuffle(cards);
+
     cards.forEach(card => {
         const cardElement = createCardElement(card);
         const listener = () => flipCard(cardElement, handleCardFlip);
+
         cardElement.addEventListener('click', listener);
         cardElement._listener = listener;
+
         gameBoard.appendChild(cardElement);
     });
 }
