@@ -18,13 +18,14 @@ export function createBoard(cardCount) {
         secondCard = null;
         lockBoard = false;
     }
-    if (cardCount % 2 == false) {
+    if (cardCount % 2 == true) {
         alert("anna parillinen luku!")
         return
     }
 
     if (cardCount > allCards.length * 2) {
         alert("luvun täytyy olla alle 32!")
+        return
     }
     gameBoard.innerHTML = '';
 
