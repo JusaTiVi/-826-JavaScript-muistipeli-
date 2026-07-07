@@ -18,10 +18,6 @@ export function createBoard(cardCount) {
         secondCard = null;
         lockBoard = false;
     }
-    if (cardCount % 2 == true) {
-        alert("anna parillinen luku!")
-        return
-    }
 
     if (cardCount > allCards.length * 2) {
         alert("luvun täytyy olla alle 32!")
@@ -55,6 +51,7 @@ function handleCardFlip(cardElement) {
     }
 
     secondCard = cardElement;
+    lockBoard = true;
     checkForMatch();
 }
 
@@ -70,7 +67,6 @@ function disableCards() {
 }
 
 function unflipCards() {
-    lockBoard = true;
     setTimeout(() => {
         firstCard.classList.remove('flipped');
         secondCard.classList.remove('flipped');
