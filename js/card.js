@@ -6,7 +6,6 @@ export function createCardElement(card) {
 }
 
 export function flipCard(cardElement, callback) {
-    console.log("flipCard")
 
     if (cardElement.classList.contains('flipped')) return;
     

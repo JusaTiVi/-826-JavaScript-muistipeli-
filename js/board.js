@@ -32,7 +32,14 @@ export function createBoard(cardCount) {
 
     cards.forEach(card => {
         const cardElement = createCardElement(card);
-        const listener = () => flipCard(cardElement, handleCardFlip);
+
+        const listener = () => {
+            if (lockBoard) return;
+            if (cardElement.classList.contains('flipped')) return;
+
+            flipCard(cardElement);
+            handleCardFlip(cardElement);
+        }
 
         cardElement.addEventListener('click', listener);
         cardElement._listener = listener;
@@ -42,13 +49,7 @@ export function createBoard(cardCount) {
 }
 
 function handleCardFlip(cardElement) {
-    console.log("lockBoard:", lockBoard);
-
-    if (lockBoard) {
-        console.log("blocked")
-        return
-    }
-
+    
     if (lockBoard) return;
     if (cardElement === firstCard) return;
 
