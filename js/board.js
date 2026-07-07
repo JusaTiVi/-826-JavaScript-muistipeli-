@@ -42,6 +42,13 @@ export function createBoard(cardCount) {
 }
 
 function handleCardFlip(cardElement) {
+    console.log("lockBoard:", lockBoard);
+
+    if (lockBoard) {
+        console.log("blocked")
+        return
+    }
+
     if (lockBoard) return;
     if (cardElement === firstCard) return;
 
