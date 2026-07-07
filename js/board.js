@@ -49,10 +49,6 @@ export function createBoard(cardCount) {
 }
 
 function handleCardFlip(cardElement) {
-    
-    if (lockBoard) return;
-    if (cardElement === firstCard) return;
-
     if (!firstCard) {
         firstCard = cardElement;
         return;
