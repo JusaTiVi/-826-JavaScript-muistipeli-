@@ -13,6 +13,13 @@ function shuffle(array) {
 }
 
 export function createBoard(cardCount) {
+    if (cardCount === undefined) {
+        cardCount = parseInt(
+            prompt("Syötä korttien määrä (parillinen luku):"), 10
+        )
+    }
+    resetBoard();
+    gameBoard.innerHTML = ""
     function resetGame() {
         firstCard = null;
         secondCard = null;
@@ -67,7 +74,21 @@ function checkForMatch() {
 function disableCards() {
     firstCard.removeEventListener('click', firstCard._listener);
     secondCard.removeEventListener('click', secondCard._listener);
+
+    checkForWin();
     resetBoard();
+}
+
+function checkForWin() {
+    const matchedCards = gameBoard.querySelectorAll(".flipped");
+
+    if (matchedCards.length === gameBoard.children.length) {
+        setTimeout(() => {
+            if (confirm("Voitit pelin! haluatko pelata uudelleen?")) {
+                createBoard()
+            }
+        })
+    }
 }
 
 function unflipCards() {
