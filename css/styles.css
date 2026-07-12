@@ -35,13 +35,17 @@ body {
 }
 
 #victory-screen {
+    display: flex;
     position: fixed;
-
+    
     justify-content: center;
     align-items: center;
+    background: white;
 }
 
 .victory-box {
+    background: white;
     padding: 20px;
+    border-radius: 10px;
     text-align: center;
 }
