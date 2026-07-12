@@ -8,8 +8,18 @@
 </head>
 <body>
     <h1>Muistipeli</h1>
-    <h2 id="timer">Aika 0s</h2>
+    <h2 id="timer">Aika: 0s</h2>
     <div id="game-board"></div>
+    <div id="victory-screen" class="hidden">
+        <div class="victory-box">
+            <h2> Voitit pelin! </h2>
+
+            <p>Aika: <span id="final-time"></span></p>
+            <p>Yrityksiä: <span id="final-attempts"></span></p>
+
+            <button id="restart">Pelaa uudelleen</button>
+        </div>
+    </div>
     <script type="module" src="./js/game.js"></script>
 </body>
 </html>

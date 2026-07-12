@@ -5,6 +5,7 @@ const allCards = [
 ];
 const timerElement = document.getElementById("timer");
 
+let attempts = 0;
 let seconds = 0;
 let timerInterval = null;
 const gameBoard = document.getElementById('game-board');
@@ -20,6 +21,7 @@ function shuffle(array) {
 }
 
 export function createBoard(cardCount) {
+    attempts = 0
     if (cardCount === undefined) {
         cardCount = parseInt(
             prompt("Syötä korttien määrä (parillinen luku):"), 10
@@ -70,6 +72,7 @@ function handleCardFlip(cardElement) {
     }
 
     secondCard = cardElement;
+    attempts++;
     lockBoard = true;
     checkForMatch();
 }
@@ -92,10 +95,17 @@ function checkForWin() {
 
     if (matchedCards.length === gameBoard.children.length) {
         stopTimer()
-        setTimeout(() => {
-            if (confirm("Voitit pelin! haluatko pelata uudelleen?")) {
-                createBoard()
-            }
+
+        document.getElementById("final-time").textContent =
+            timerElement.textContent.replace("Aika: ", "")
+
+        document.getElementById("final-attempts").textContent = attempts
+
+        document.getElementById("victory-screen").classList.remove("hidden")
+
+        document.getElementById("restart").addEventListener("click", () => {
+            document.getElementById("victory-screen").classList.add("hidden")
+        createBoard()
         })
     }
 }
