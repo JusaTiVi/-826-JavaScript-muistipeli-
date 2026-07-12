@@ -37,7 +37,6 @@ body {
 #victory-screen {
     position: fixed;
 
-    display: flex;
     justify-content: center;
     align-items: center;
 }
