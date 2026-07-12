@@ -9,6 +9,7 @@ let attempts = 0;
 let seconds = 0;
 let timerInterval = null;
 const gameBoard = document.getElementById('game-board');
+const restartButton = document.getElementById("restart")
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
@@ -102,14 +103,12 @@ function checkForWin() {
         document.getElementById("final-attempts").textContent = attempts
 
         document.getElementById("victory-screen").classList.remove("hidden")
-
-        document.getElementById("restart").addEventListener("click", () => {
-            document.getElementById("victory-screen").classList.add("hidden")
-        createBoard()
-        })
     }
 }
-
+restartButton.addEventListener("click", () => {
+    document.getElementById("victory-screen").classList.add("hidden")
+    createBoard()
+})
 function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove('flipped');
