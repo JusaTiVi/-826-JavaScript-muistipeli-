@@ -3,6 +3,10 @@ import { createCardElement, flipCard } from './card.js';
 const allCards = [
     '🍎', '🍐', '🍒', '🍉', '🍇', '🍓', '🍌', '🍍', '🥝', '🥥', '🍑', '🍈', '🍋', '🍊', '🍏', '🍅'
 ];
+const timerElement = document.getElementById("timer");
+
+let seconds = 0;
+let timerInterval = null;
 const gameBoard = document.getElementById('game-board');
 let firstCard = null;
 let secondCard = null;
@@ -23,6 +27,7 @@ export function createBoard(cardCount) {
     }
     resetBoard();
     gameBoard.innerHTML = ""
+    startTimer();
     function resetGame() {
         firstCard = null;
         secondCard = null;
@@ -86,6 +91,7 @@ function checkForWin() {
     const matchedCards = gameBoard.querySelectorAll(".flipped");
 
     if (matchedCards.length === gameBoard.children.length) {
+        stopTimer()
         setTimeout(() => {
             if (confirm("Voitit pelin! haluatko pelata uudelleen?")) {
                 createBoard()
@@ -106,4 +112,19 @@ function unflipCards() {
 
 function resetBoard() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
+}
+
+function startTimer() {
+    clearInterval(timerInterval)
+
+    seconds = 0
+    
+    timerInterval = setInterval(() => {
+        seconds++;
+        timerElement.textContent = `Aika: ${seconds}s`
+    }, 1000)
+}
+
+function stopTimer() {
+    clearInterval(timerInterval)
 }
