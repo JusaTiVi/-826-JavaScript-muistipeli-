@@ -35,12 +35,19 @@ body {
 }
 
 #victory-screen {
-    display: flex;
     position: fixed;
     
     justify-content: center;
     align-items: center;
     background: white;
+}
+
+#victory-screen.hidden {
+    display: none;
+}
+
+#victory-screen:not(.hidden) {
+    display: flex;
 }
 
 .victory-box {
