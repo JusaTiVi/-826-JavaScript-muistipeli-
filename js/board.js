@@ -102,6 +102,10 @@ function checkForWin() {
 
         document.getElementById("final-attempts").textContent = attempts
 
+        const score = Math.max(0, 1000 - seconds * 5 - attempts * 10)
+
+        document.getElementById("points").textContent = score
+
         document.getElementById("victory-screen").classList.remove("hidden")
     }
 }
